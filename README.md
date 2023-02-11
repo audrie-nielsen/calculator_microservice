@@ -5,10 +5,10 @@ REQUESTING DATA:
 This program saves data that is sent to it into an array until that data is requested back.
 In order to send the data to the server to be saved into the array. Data sent to the server must be sent as bytes, to convert strings to bytes and send it to the server there are two options:
 
-   OPTION A
+   OPTION A:
    socket.send(('-6.9').encode('ASCII'))
    
-   OPTION B
+   OPTION B:
    socket.send(b"-6.9")
 
 After data has been sent to the server and the server has successfully saved the data to the array, a request can be made to return the last data that was added to the array (pop the stack). When this is done the data should be converted back into string. 
