@@ -23,7 +23,5 @@ When the server responds to the request, the response will be sent back in bytes
   
   res = socket.recv().decode('ASCII')
   
-For a more in depth explanation and a UML Sequence Diagram for this program see Wiki Page 'Implementing this Microservice'.
-
-
-
+For a more in depth explanation see Wiki Page 'Implementing this Microservice'.
+For a UML Sequence Diagram for this program see Wiki Page 'UML Sequence Diagram'.
