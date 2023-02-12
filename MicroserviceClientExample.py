@@ -1,5 +1,3 @@
-#
-#   Hello World client in Python
 #   Connects REQ socket to tcp://localhost:5555
 
 import zmq
@@ -14,25 +12,54 @@ socket.connect("tcp://localhost:5555")
 # ZeroMQ uses bytes to communicate data.
 # When sending a request to the server, encode the value as byte in 1 of 2 ways:
 
-# Option 1: socket.send(('#').encode('ASCII'))
-socket.send(('-6.9').encode('ASCII'))
+# Option 1: socket.send('[request]'.encode('ASCII'))
+socket.send('-6.9'.encode('ASCII'))
 res = socket.recv()
 
-# Option 2: socket.send((b"#")
+# Option 2: socket.send((b"[request]")
 socket.send(b"4.0")
 res = socket.recv()
 
-socket.send(('2.8').encode('ASCII'))
+socket.send('2.8'.encode('ASCII'))
 res = socket.recv()
 
-socket.send(b"POP")  # Send request "POP" to let the server know you'd like to retrieve the last calculation
+socket.send(b"3 + 6 / 2 - 9.7")
+res = socket.recv()
+
+socket.send('7 + 4 * 3'.encode('ASCII'))
+res = socket.recv()
+
+socket.send('103'.encode('ASCII'))
+res = socket.recv()
+
+socket.send(b"POP RESULT")  # Send request "POP RESULT" to retrieve the last result pushed
 res = socket.recv().decode('ASCII')  # To convert server response back into a string
 print(res)
 
-socket.send(('POP').encode('ASCII'))
+socket.send('POP RESULT'.encode('ASCII'))
 res = socket.recv().decode('ASCII')
 print(res)
 
-socket.send(b"POP")
+socket.send(b"POP RESULT")
+res = socket.recv().decode('ASCII')
+print(res)
+
+socket.send(b"POP RESULT")
+res = socket.recv().decode('ASCII')
+print(res)
+
+socket.send(b"POP RESULT")
+res = socket.recv().decode('ASCII')
+print(res)
+
+socket.send(b"POP EQUATION")  # Send request "POP EQUATION" to retrieve the last equation pushed
+res = socket.recv().decode('ASCII')
+print(res)
+
+socket.send(b"POP EQUATION")
+res = socket.recv().decode('ASCII')
+print(res)
+
+socket.send(b"POP EQUATION")
 res = socket.recv().decode('ASCII')
 print(res)
