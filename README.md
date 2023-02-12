@@ -10,13 +10,13 @@ For the server to save data into an array until that data is requested back.
    OPTION B:
    socket.send(b"-6.9")
 
-To request that the server return the last data that was added to the array (pop the stack). When this is done the data should be converted back into string. 
+To request that the server return the last data that was added to the array (pop the stack). When this is done the data should be converted back into string. POP EQUATION returns the last pushed equation and POP RESULT returns the last pushed result.
 
   OPTION A:
-  socket.send(('POP').encode('ASCII'))
+  socket.send(('POP EQUATION').encode('ASCII'))
 
   OPTION B:
-  socket.send(b"POP")
+  socket.send(b"POP RESULT")
   
 RECEIVING DATA:
 When the server responds to the request, the response will be sent back in bytes. If the data is wanted as a string, it can be decoded as:
