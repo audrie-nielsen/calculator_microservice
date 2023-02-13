@@ -30,4 +30,5 @@ When the server responds to the request, the response will be sent back as a JSO
   
 # Where to find more information
 For a more in depth explanation see Wiki Page 'Implementing this Microservice'.
-For a UML Sequence Diagram for this program see Wiki Page 'UML Sequence Diagram'.
+
+<img width="675" alt="Screenshot 2023-02-13 at 3 08 06 PM" src="https://user-images.githubusercontent.com/122310331/218594786-1b241699-3755-4973-8248-55808301b15a.png">
