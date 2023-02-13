@@ -1,7 +1,5 @@
 #   Connects REQ socket to tcp://localhost:5555
-
 import zmq
-
 context = zmq.Context()
 
 #  Socket to talk to server
@@ -13,53 +11,37 @@ socket.connect("tcp://localhost:5555")
 # When sending a request to the server, encode the value as byte in 1 of 2 ways:
 
 # Option 1: socket.send('[request]'.encode('ASCII'))
-socket.send('-6.9'.encode('ASCII'))
+socket.send(b"POP")
+res = socket.recv_json()
+print(res)
+
+socket.send('16/4'.encode('ASCII'))
 res = socket.recv()
 
 # Option 2: socket.send((b"[request]")
 socket.send(b"4.0")
 res = socket.recv()
 
-socket.send('2.8'.encode('ASCII'))
+socket.send(b"3 + 6 / 2 - 9")
 res = socket.recv()
 
-socket.send(b"3 + 6 / 2 - 9.7")
+socket.send('3'.encode('ASCII'))
 res = socket.recv()
 
 socket.send('7 + 4 * 3'.encode('ASCII'))
 res = socket.recv()
 
-socket.send('103'.encode('ASCII'))
+socket.send('19'.encode('ASCII'))
 res = socket.recv()
 
-socket.send(b"POP RESULT")  # Send request "POP RESULT" to retrieve the last result pushed
-res = socket.recv().decode('ASCII')  # To convert server response back into a string
+socket.send(b"POP")  # Send request "POP RESULT" to retrieve the last equation and result pushed
+res = socket.recv_json() # Use socket.recv_json() to receive the equation and result as a JSON
 print(res)
 
-socket.send('POP RESULT'.encode('ASCII'))
-res = socket.recv().decode('ASCII')
+socket.send('POP'.encode('ASCII'))
+res = socket.recv_json()
 print(res)
 
-socket.send(b"POP RESULT")
-res = socket.recv().decode('ASCII')
-print(res)
-
-socket.send(b"POP RESULT")
-res = socket.recv().decode('ASCII')
-print(res)
-
-socket.send(b"POP RESULT")
-res = socket.recv().decode('ASCII')
-print(res)
-
-socket.send(b"POP EQUATION")  # Send request "POP EQUATION" to retrieve the last equation pushed
-res = socket.recv().decode('ASCII')
-print(res)
-
-socket.send(b"POP EQUATION")
-res = socket.recv().decode('ASCII')
-print(res)
-
-socket.send(b"POP EQUATION")
-res = socket.recv().decode('ASCII')
+socket.send(b"POP")
+res = socket.recv_json()
 print(res)
