@@ -28,5 +28,6 @@ When the server responds to the request, the response will be sent back as a JSO
 
 > > Example Output: {"equation": "7 + 4 * 3", "result": "19"}
   
+# Where to find more information
 For a more in depth explanation see Wiki Page 'Implementing this Microservice'.
 For a UML Sequence Diagram for this program see Wiki Page 'UML Sequence Diagram'.
