@@ -2,7 +2,7 @@
 This program uses PyZMQ, instructions for installing PyZMQ can be found at: https://zeromq.org/get-started/?language=python#
 
 # Connecting to the Server:
-Including the following at the top of your code to connect to the server through sockets:
+Including the following at the top of your code to connect to the server through sockets (see MicroserviceClientExample.py for an example):
 > socket = context.socket(zmq.REQ)
 > socket.connect("tcp://localhost:5555")
 
