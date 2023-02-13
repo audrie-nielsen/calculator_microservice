@@ -11,10 +11,6 @@ socket.connect("tcp://localhost:5555")
 # When sending a request to the server, encode the value as byte in 1 of 2 ways:
 
 # Option 1: socket.send('[request]'.encode('ASCII'))
-socket.send(b"POP")
-res = socket.recv_json()
-print(res)
-
 socket.send('16/4'.encode('ASCII'))
 res = socket.recv()
 
@@ -34,7 +30,7 @@ res = socket.recv()
 socket.send('19'.encode('ASCII'))
 res = socket.recv()
 
-socket.send(b"POP")  # Send request "POP RESULT" to retrieve the last equation and result pushed
+socket.send(b"POP")  # Send request "POP" to retrieve the last equation and result pushed
 res = socket.recv_json() # Use socket.recv_json() to receive the equation and result as a JSON
 print(res)
 
